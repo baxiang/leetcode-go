@@ -4,7 +4,7 @@
 
 例如 第1题两数之和 中文地址是https://leetcode-cn.com/problems/two-sum/
 
-最终解题文件名称是1two-sum
+最终形成的解题文件名称是1two-sum
 
 leetcode解题文章分类汇总:
 https://www.yuque.com/baxiang/leetcode
