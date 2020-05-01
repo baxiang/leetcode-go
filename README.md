@@ -1,4 +1,2 @@
 
-|题目|类型|
-|---|---|
-|21. 合并两个有序链表|链表|
+[![](https://img.shields.io/badge/Language-Go-%2300ADD8)](https://github.com/baxiang/leetcode-go)
