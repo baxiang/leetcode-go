@@ -7,6 +7,5 @@
 leetcode文章汇总:
 https://www.yuque.com/baxiang/leetcode
 
-![image.png](https://pic.leetcode-cn.com/dd67fe832b1a611dcd6bceff4696280ecbf91f4bec94c10ece9def1ce6fd1aef-image.png)
-
+[![star](https://pic.leetcode-cn.com/ae7b426dcfa6381bb4b666664e93d2c9ecffcaf9b2841797b4522c712b1b7594-GitHub-Star-brightgreen.svg)](https://github.com/baxiang/leetcode-go)
 有更好的解题思路欢迎提供
