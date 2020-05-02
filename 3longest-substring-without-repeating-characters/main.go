@@ -4,19 +4,23 @@ import (
 	"fmt"
 )
 
-func lengthOfLongestSubstring4(s string) int {
-	freq := make([]int,128)
+func lengthOfLongestSubstring(s string) int {
+	if len(s)<=1{
+		return len(s)
+	}
+	m :=make(map[byte]struct{})
+	m[s[0]]= struct{}{}
 	var res = 0
-	start,end := 0,-1
-	for start<len(s){
-		if end+1<len(s)&&freq[s[end+1]] == 0{
+	start,end := 0,1
+	for start<len(s)&&end<len(s){
+		if _,ok:=m[s[end]];!ok{
+			m[s[end]]= struct{}{}
+			res = max(res,end-start+1)
 			end++
-			freq[s[end]]++
 		}else{
-			freq[s[start]]--
+			delete(m,s[start])
 			start++
 		}
-		res = max(res,end-start+1)
 	}
 	return res
 }
@@ -68,7 +72,7 @@ func lengthOfLongestSubstring3(s string) int{
 }
 
 
-func lengthOfLongestSubstring1(s string) int{
+func lengthOfLongestSubstring4(s string) int{
 	if len(s)==0 {
 		return 0
 	}
@@ -86,12 +90,13 @@ func lengthOfLongestSubstring1(s string) int{
 }
 
 func main() {
-	fmt.Println(lengthOfLongestSubstring(""))//1
-	fmt.Println(lengthOfLongestSubstring1("au"))//2
-	fmt.Println(lengthOfLongestSubstring1("abcabcbb"))//3
-	fmt.Println(lengthOfLongestSubstring1("bbbb"))//1
-	fmt.Println(lengthOfLongestSubstring1("pwwkew"))//3
-	fmt.Println(lengthOfLongestSubstring1("abba"))//2
-	fmt.Println(lengthOfLongestSubstring1("bpfbhmipx"))//7
-    fmt.Println(lengthOfLongestSubstring1("eeydgwdykpv"))//7
+	fmt.Println(lengthOfLongestSubstring(""))//0
+	fmt.Println(lengthOfLongestSubstring(" "))//1
+	fmt.Println(lengthOfLongestSubstring("au"))//2
+	fmt.Println(lengthOfLongestSubstring("abcabcbb"))//3
+	fmt.Println(lengthOfLongestSubstring("bbbb"))//1
+	fmt.Println(lengthOfLongestSubstring("pwwkew"))//3
+	fmt.Println(lengthOfLongestSubstring("abba"))//2
+	fmt.Println(lengthOfLongestSubstring("bpfbhmipx"))//7
+    fmt.Println(lengthOfLongestSubstring("eeydgwdykpv"))//7
 }
