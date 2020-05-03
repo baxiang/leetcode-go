@@ -5,10 +5,9 @@ type Node struct {
 	Children []*Node
 }
 
-
-func preorder(root *Node) []int {
-    if root==nil{
-    	return nil
+func postorder(root *Node) []int {
+	if root==nil{
+		return nil
 	}
 	res :=make([]int,0)
 	helper(root,&res)
@@ -19,31 +18,30 @@ func helper(root *Node,res *[]int){
 	if root==nil{
 		return
 	}
-	*res = append(*res,root.Val)
-	for i:=0;i<len(root.Children);i++{
-		helper(root.Children[i],res)
+	for _,v:=range root.Children{
+		helper(v,res)
 	}
+	*res = append(*res,root.Val)
 }
 
-func preorder1(root *Node) []int {
+
+func postorder1(root *Node) []int {
 	if root==nil{
 		return nil
 	}
 	stack := make([]*Node,0)
 	stack = append(stack,root)
-	res :=make([]int,0)
+	res := make([]int,0)
 	for len(stack)>0{
 		node := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		res = append(res,node.Val)
-		for i:=len(node.Children)-1;i>=0;i--{
+		res = append([]int{node.Val},res...)
+		for i:=0;i<len(node.Children);i++{
 			stack = append(stack,node.Children[i])
 		}
 	}
 	return res
 }
-
-
 
 func main() {
 	
