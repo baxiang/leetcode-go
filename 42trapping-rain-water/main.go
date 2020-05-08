@@ -23,7 +23,6 @@ func trap(height []int)int{
 	// 结束位置是倒数第二个，而不是倒数第一个
 	for i:=1;i<l-1;i++{
 		leftMax :=0
-		//
 		for k:=0;k<=i;k++{
 			leftMax =max(height[k],leftMax)
 		}

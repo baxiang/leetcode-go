@@ -2,9 +2,9 @@
 
 文件命名格式按照 题目编号+leetcode.cn题目地址后缀构成
 
-例如 第1题两数之和 中文地址是https://leetcode-cn.com/problems/two-sum/
+例如 第1题两数之和 leetcode中文网站地址是https://leetcode-cn.com/problems/two-sum/
 
-最终形成的解题文件名称是1two-sum
+最终形成的解题文件夹名称是1two-sum
 
 leetcode解题文章分类汇总:
 https://www.yuque.com/baxiang/leetcode

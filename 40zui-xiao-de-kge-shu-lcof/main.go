@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 //func getLeastNumbers0(arr []int, k int) []int {
 //	sort.Sort(Array(arr))
@@ -19,20 +20,21 @@ import (
 //    sort.Ints(arr)
 //    return arr[:k]
 //}
-func getLeastNumbers1(arr []int, k int) []int {
-	//sort.Ints(arr)
-	 sort(arr,0,len(arr)-1)
-	return arr
+
+
+func getLeastNumbers(arr []int, k int) []int {
+	sort.Ints(arr)
+	return arr[:k]
 }
 
 //func quickSort1(arr []int){
 //
 //}
-func sort(arr [] int ,left,right int){
+func qSort(arr [] int ,left,right int){
 	if left<right {
          p := partition(arr,left,right)
-         sort(arr,left,p-1)
-         sort(arr,p+1,right)
+		qSort(arr,left,p-1)
+		qSort(arr,p+1,right)
 	}
 }
 
@@ -139,11 +141,10 @@ func quickSort1(arr []int)[]int{
    return r
 }
 
-
 //面试题40. 最小的k个数 https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/
 func main() {
-	//fmt.Println(getLeastNumbers1([]int{3,2,1,4,7,9},4))
-	l :=[]int{10,3,2,1,0,4,7,9}
-	buildHeap(l)
-	fmt.Println(quickSort1(l))
+	fmt.Println(getLeastNumbers([]int{3,2,1,4,7,9},2))
+	//l :=[]int{10,3,2,1,0,4,7,9}
+	//buildHeap(l)
+	//fmt.Println(quickSort1(l))
 }
