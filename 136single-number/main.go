@@ -15,6 +15,9 @@ import "fmt"
 //        return 0
 //}
 
+// 异或运算
+//任何数和 00 做异或运算，结果仍然是原来的数
+// 任何数和其自身做异或运算，结果是 00
 func singleNumber(nums []int) int {
 	var ans = 0
 	for _,n :=range nums {
