@@ -15,7 +15,7 @@ func revert(head *ListNode)*ListNode{
 	return pre
 }
 
-func reverseKGroup(head *ListNode, k int) *ListNode {
+func reverseKGroup2(head *ListNode, k int) *ListNode {
 	dummy := &ListNode{Val:  -1,}
 	dummy.Next = head
 	pre,curr,end := dummy,dummy,dummy
@@ -70,6 +70,36 @@ func reverseKGroup1(head *ListNode, k int) *ListNode {
 	}
 	return dummy.Next
 }
+// 栈处理
+func reverseKGroup(head *ListNode, k int) *ListNode {
+	if head==nil{
+		return nil
+	}
+	dummyHead :=&ListNode{}
+	preNode := dummyHead
+	stack := make([]*ListNode,0)
+	for head!=nil{
+		count :=0
+		for head!=nil&&count<k{
+			stack = append(stack,head)
+			head = head.Next
+			count++
+		}
+		l := len(stack)
+		if l<k{
+			preNode.Next = stack[0]
+			break
+		}
+		for i:=l-1;i>=0;i--{
+			preNode.Next = stack[i]
+			preNode = stack[i]
+		}
+		preNode.Next =nil
+		stack =stack[l:]
+	}
+	return dummyHead.Next
+}
+
 
 func main() {
 	a := &ListNode{Val:  1}
@@ -81,9 +111,10 @@ func main() {
 	c.Next = d
 	e :=&ListNode{Val:  5}
 	d.Next = e
-	f :=&ListNode{Val:  6}
-	e.Next = f
-	r := reverseKGroup1(a,3)
+	//f :=&ListNode{Val:  6}
+	//e.Next = f
+	//r :=a
+	r := reverseKGroup(a,3)
 	for r!=nil{
 		fmt.Println(r.Val)
 		r = r.Next

@@ -31,12 +31,6 @@ func isUglyNum(n int)bool{
 
 //面试题49. 丑数
 func main() {
-    //fmt.Println(isUglyNum(2))
 	fmt.Println(nthUglyNumber(10))
 	fmt.Println(nthUglyNumber(11))
-	//for i:=1;i<=20;i++{
-	//	if isUglyNum(i){
-	//		fmt.Println(i)
-	//	}
-	//}
 }
