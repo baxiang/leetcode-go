@@ -3,39 +3,53 @@ package main
 import "fmt"
 
 func validPalindrome(s string) bool {
-	m :=make(map[byte]int)
-	for i:=range s{
-		m[s[i]]++
-	}
-	var count int
-	for _,k:=range m{
-		if k%2!=0{
-			count++
+	left :=0
+	right :=len(s)-1
+	for left<right{
+		if s[left]!=s[right]{
+			return isPalindrome(s[left:right])||isPalindrome(s[left+1:right+1])
 		}
+		left++
+		right--
 	}
-	l :=len(s)
-	if (l%2==0&&count>0)||(l%2!=0&&count>2){
-		return false
+	return true
+}
+
+func isPalindrome(s string)bool{
+	left :=0
+	right :=len(s)-1
+	for left<right{
+		if s[left]!=s[right]{
+			return false
+		}
+		left++
+		right--
+	}
+	return true
+}
+
+func palindromeHelp(s string,isDelete bool)bool{
+	left :=0
+	right :=len(s)-1
+	for left<right{
+		if s[left]!=s[right]{
+			if isDelete{
+				return palindromeHelp(s[left:right],false)||palindromeHelp(s[left+1:right+1],false)
+			}else {
+				return false
+			}
+		}
+		left++
+		right--
 	}
 	return true
 }
 
 func main() {
-	fmt.Println(validPalindrome("tebbem"))
-	fmt.Println(validPalindrome("aba"))
-	fmt.Println(validPalindrome("abca"))
-	fmt.Println(validPalindrome("abc"))
-	//eeabddddbaeed
-	fmt.Println(validPalindrome("cdbeeeabddddbaeedebdc"))
-	//aguokepatg
-	//bnvfqmgmlc
-	//upuufxoohd
-	//fpgjdmysgv
-	//hmvffcnqxj
-	//jxqncffvmh
-	//vgsymdjgpf
-	//dhooxfuupu
-	//culmgmqfvn
-	//bgtapekouga
-	fmt.Println(validPalindrome("aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"))
+	fmt.Println(validPalindrome("tebbem"))//f
+	fmt.Println(validPalindrome("aba")) //t
+	fmt.Println(validPalindrome("abca")) //t
+	fmt.Println(validPalindrome("abc")) //f
+	fmt.Println(validPalindrome("cdbeeeabddddbaeedebdc"))//t
+	fmt.Println(validPalindrome("aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"))//t
 }
