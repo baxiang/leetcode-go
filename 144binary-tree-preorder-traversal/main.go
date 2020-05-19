@@ -9,7 +9,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 // 递归方法
-func preorderTraversal(root *TreeNode) []int{
+func preorderTraversal1(root *TreeNode) []int{
 	if root==nil {
 		return nil
 	}
@@ -19,8 +19,8 @@ func preorderTraversal(root *TreeNode) []int{
 	return nil
 }
 
-// 中左右
-func preorderTraversal1(root *TreeNode) []int {
+ //中序遍历
+func preorderTraversal2(root *TreeNode) []int {
 	var l []int
 	//如果是空直接返回
 	if root == nil {
@@ -45,8 +45,8 @@ func preorderTraversal1(root *TreeNode) []int {
 	return l
 }
 
-// 中左右
-func preorderTraversal2(root *TreeNode) []int {
+//前序遍历  中左右
+func preorderTraversal(root *TreeNode) []int {
 	var l []int
 	//如果是空直接返回
 	if root == nil {
@@ -100,5 +100,5 @@ func main() {
 	}
 	c.Left = f
 	// 1 2 4 5 3 6
-	preorderTraversal1(a)
+	preorderTraversal(a)
 }
