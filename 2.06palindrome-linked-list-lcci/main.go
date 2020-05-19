@@ -21,48 +21,55 @@ func isPalindrome1(head *ListNode) bool {
 }
 
 func isPalindrome(head *ListNode) bool {
-	if head==nil{
+	if head == nil {
 		return true
 	}
 	// 查找中间节点
 	midNode := findMidNode(head)
 	// 翻转以中间节点的链表
 	currTail := revertLinkedNode(midNode)
-    // 判断头节点和尾节点值是否一直
-	for head!=nil&&currTail!=nil{
-		if head.Val!=currTail.Val{
+	// 判断头节点和尾节点值是否一直
+	for head != nil && currTail != nil {
+		if head.Val != currTail.Val {
 			return false
 		}
-		head= head.Next
+		head = head.Next
 		currTail = currTail.Next
 	}
 	return true
 }
 
-func isPalindrome1(head *ListNode) bool {
-	if head==nil{
+func isPalindrome2(head *ListNode) bool {
+	if head == nil {
 		return true
 	}
-	var res []
-	for head!=nil{
-
+	var res []*ListNode
+	for head != nil {
+		res = append(res, head)
+		head = head.Next
+	}
+	left := 0
+	right := len(res) - 1
+	for left < right {
+		if res[left].Val != res[right].Val {
+			return false
+		}
+		left++
+		right--
 	}
 	return true
 }
 
+func findMidNode(head *ListNode) *ListNode {
 
-
-func findMidNode(head *ListNode)*ListNode{
-
-	 slow := head
-	 fast := head.Next
-	 for fast!=nil&&fast.Next!=nil{
-	 	slow = slow.Next
-	 	fast = fast.Next.Next
-	 }
-	 return slow
+	slow := head
+	fast := head.Next
+	for fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+	return slow
 }
-
 
 func revertLinkedNode(head *ListNode) *ListNode {
 	dummyHead := &ListNode{}
@@ -76,16 +83,15 @@ func revertLinkedNode(head *ListNode) *ListNode {
 	return dummyHead.Next
 }
 
-
 func revertLinkedNode1(head *ListNode) *ListNode {
-	if head==nil||head.Next==nil{
+	if head == nil || head.Next == nil {
 		return head
 	}
-	 next :=head.Next
-	 node := revertLinkedNode1(next)
-	 next.Next = head
-	 head.Next = nil
-	 return node
+	next := head.Next
+	node := revertLinkedNode1(next)
+	next.Next = head
+	head.Next = nil
+	return node
 }
 
 func main() {
@@ -99,10 +105,6 @@ func main() {
 	t5 := ListNode{Val: 5}
 	t4.Next = &t5
 
-
-
-
-    fmt.Println(isPalindrome(&t1))
-
+	fmt.Println(isPalindrome(&t1))
 
 }
